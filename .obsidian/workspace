@@ -1,0 +1,100 @@
+{
+  "main": {
+    "id": "29b91e67d8bd50c8",
+    "type": "split",
+    "children": [
+      {
+        "id": "7b8e5516e93e982a",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "lec01-introduction-and-examples/1.5-some-systemcalls.md",
+            "mode": "preview"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "23da6a3900b66a14",
+    "type": "split",
+    "children": [
+      {
+        "id": "97e2207b66bf0910",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6912cc17cdd6d5c6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "9f2c8d61773facd5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "1cd63a7f8b7c8619",
+    "type": "split",
+    "children": [
+      {
+        "id": "4b60d9dbf29d5c88",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6c5a340b74e31b9c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "lec01-introduction-and-examples/1.5-some-systemcalls.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 250
+  },
+  "lastOpenFiles": [
+    "lec01-introduction-and-examples/1.5-some-systemcalls.md",
+    "SUMMARY.md",
+    "lec01-introduction-and-examples/1.4-ke-cheng-zi-yuan.md",
+    "lec01-introduction-and-examples/1.3-why-hard-and-interesting.md",
+    "lec01-introduction-and-examples/1.2-cao-zuo-xi-tong-jie-gou.md",
+    "lec01-introduction-and-examples/1.1-ke-cheng-jian-jie.md",
+    "README.md",
+    "Untitled.md",
+    "lec01-introduction-and-examples/README.md",
+    "lec13-sleep-and-wakeup-robert/13.3-lost-wakeup.md"
+  ]
+}

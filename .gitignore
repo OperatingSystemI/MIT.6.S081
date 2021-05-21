@@ -1,0 +1,4 @@
+*.[oa]
+*.exe
+.obsidian/
+.DS_Store

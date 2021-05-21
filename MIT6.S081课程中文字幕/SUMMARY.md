@@ -6,7 +6,7 @@
   * [1.2 操作系统结构](lec01-introduction-and-examples/1.2-cao-zuo-xi-tong-jie-gou.md)
   * [1.3 Why Hard and Interesting](lec01-introduction-and-examples/1.3-why-hard-and-interesting.md)
   * [1.4 课程结构和资源](lec01-introduction-and-examples/1.4-ke-cheng-zi-yuan.md)
-  * [1.5 read, write, exit系统调用](lec01-introduction-and-examples/1.5-some-systemcalls.md)
+  * [1.5 read, write, exit系统调用](1.5-some-systemcallsj.md)
   * [1.6 open系统调用](lec01-introduction-and-examples/1.6-open-xi-tong-tiao-yong.md)
   * [1.7 Shell](lec01-introduction-and-examples/1.7-shell.md)
   * [1.8 fork系统调用](lec01-introduction-and-examples/1.8-fork.md)

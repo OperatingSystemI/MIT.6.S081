@@ -4,8 +4,6 @@
 
 [tool](https://pdos.csail.mit.edu/6.828/2020/tools.html)
 
-
-
 ```shell
 # 基础依赖
 sudo apt-get install git build-essential gdb-multiarch qemu-system-misc binutils-riscv64-linux-gnu 
@@ -16,12 +14,23 @@ sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev
 ## 包
 [码云拉取riscv-gnu-toolchain](https://blog.csdn.net/ALLap97/article/details/106345045/)
 git clone  https://gitee.com/mirrors/riscv-gnu-toolchain
+
+# ubuntu
 git clone -b upstream https://gitee.com/mirrors/riscv-newlib.git
 git clone -b riscv-glibc-2.29 https://gitee.com/mirrors/riscv-glibc.git
 git clone -b riscv-gcc-9.2.0-rvv https://gitee.com/mirrors/riscv-gcc.git
 git clone https://gitee.com/mirrors/riscv-dejagnu.git
 git clone -b rvv-0.8.x https://gitee.com/mirrors/riscv-binutils-gdb.git riscv-binutils
 git clone -b fsf-gdb-8.3-with-sim https://gitee.com/mirrors/riscv-binutils-gdb.git riscv-gdb
+# mac
+git clone -b upstream https://gitee.com/mirrors/riscv-newlib.git
+git clone -b riscv-glibc-2.29 https://gitee.com/mirrors/riscv-glibc.git
+git clone -b riscv-gcc-9.2.0-rvv https://gitee.com/mirrors/riscv-gcc.git
+git clone https://gitee.com/mirrors/riscv-dejagnu.git
+git clone -b riscv-binutils-2.36.1 https://gitee.com/mirrors/riscv-binutils-gdb.git riscv-binutils
+git clone -b fsf-gdb-8.3-with-sim https://gitee.com/mirrors/riscv-binutils-gdb.git riscv-gdb
+
+
 cd riscv-gnu-toolchain
 ./configure --prefix=/usr/local
 sudo make
@@ -34,7 +43,9 @@ cd qemu-5.1.0
 make
 sudo make install
 
-git clone git://github.com/mit-pdos/xv6-riscv-fall19.git
+git clone git://github.com/mit-pdos/xv6-riscv-book.git
+git clone git://g.csail.mit.edu/xv6-labs-2020
+git checkout util
 进入这个目录再 make qemu
 
 
@@ -52,4 +63,14 @@ git config --global https.proxy 'socks5://127.0.0.1:1090'
 
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+```
+
+## 基本使用技巧：
+
+```shell
+$ make qemu : 编译运行xv6
+$ ls: 列出所有文件
+Crtl-p:列出当前存在进程
+Crtl-a x：退出xv6系统
+./grade-lab-util <可执行文件名>：测试你写的代码（注意这个要在xv6源码根目录下执行）
 ```

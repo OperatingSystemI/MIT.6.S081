@@ -1,4 +1,6 @@
-*.[oa]
+*.[oacd]
+*.asm
 *.exe
 .obsidian/
 .DS_Store
+.vscode/

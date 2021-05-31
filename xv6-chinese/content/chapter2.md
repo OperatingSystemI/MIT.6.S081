@@ -75,7 +75,7 @@ xv6 使用从内核结尾到 `PHYSTOP` 之间的物理内存为运行时分配�
 
 `exec` 创建的第一个用户程序 `/init` 程序段的头是这样的：
 
-~~~
+```
 #objdump -p _init
 
 _init:    file format elf32-i386
@@ -83,7 +83,7 @@ _init:    file format elf32-i386
 Program Header:
     LOAD off    0x00000054 vaddr 0x00000000 paddr 0x00000000 align 2**2
          filesz 0x000008c0 memsz 0x000008cc flags
-~~~
+```
 
 程序段头中的 `filesz` 可能比 `memsz` 小，这表示中间相差的地方应该用 0 填充（对于 C 的全局变量）而不是继续从文件中读数据。对于 `/init`，`filesz` 是 2240 字节而 `memsz` 是 2252 字节。所以 `allocuvm` 会分配足够的内存来装 2252 字节的内容，但只从文件 `/init` 中读取 2240 字节的内容。
 

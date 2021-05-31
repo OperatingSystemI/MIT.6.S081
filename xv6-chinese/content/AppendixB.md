@@ -46,14 +46,14 @@ xv6 几乎没有使用段；取而代之的是第2章讲述的分页。引导加
 
 引导加载器的最后一项工作是调用内核的入口指令，即内核第一条指令的执行地址。在 xv6 中入口指令的地址是 0x10000c：
 
-~~~
+```
 # objdump -f kernel
 
 kernel:    file format elf32-i386
 architecture: i386, flags 0x00000112:
 EXEC_P, HAS_SYMS, D_PAGED
 start address 0x0010000c
-~~~
+```
 
 按照惯例，在 `entry.S`（1036）中定义的 `_start` 符号即 ELF 入口。由于 xv6 还没有建立虚拟内存，xv6 的入口即 `entry`（1040）的物理地址。
 

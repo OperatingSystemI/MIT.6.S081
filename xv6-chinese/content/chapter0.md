@@ -246,7 +246,7 @@ mknod("/console", 1, 1);
 
 `fstat` 可以获取一个文件描述符指向的文件的信息。它填充一个名为 `stat` 的结构体，它在 `stat.h` 中定义为：
 
-~~~ C
+```c
 #define T_DIR  1
 #define T_FILE 2
 #define T_DEV  3
@@ -260,7 +260,7 @@ mknod("/console", 1, 1);
        short nlink; // Number of links to file
        uint size;   // Size of file in bytes
 };
-~~~
+```
 
 文件名和这个文件本身是有很大的区别。同一个文件（称为 `inode`）可能有多个名字，称为**连接** (`links`)。系统调用 `link` 创建另一个文件系统的名称，它指向同一个 `inode`。下面的代码创建了一个既叫做 `a` 又叫做 `b` 的新文件。
 

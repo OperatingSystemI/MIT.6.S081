@@ -2,6 +2,7 @@
 
 ## 环境配置
 
+[gdb参考](https://zhuanlan.zhihu.com/p/331492444)
 [tool](https://pdos.csail.mit.edu/6.828/2020/tools.html)
 
 ```shell
@@ -14,7 +15,7 @@ sudo apt-get install autoconf automake autotools-dev curl libmpc-dev libmpfr-dev
 ## 包
 [码云拉取riscv-gnu-toolchain](https://blog.csdn.net/ALLap97/article/details/106345045/)
 git clone  https://gitee.com/mirrors/riscv-gnu-toolchain
-
+cd riscv-gnu-toolchain
 # ubuntu
 git clone -b upstream https://gitee.com/mirrors/riscv-newlib.git
 git clone -b riscv-glibc-2.29 https://gitee.com/mirrors/riscv-glibc.git
@@ -73,4 +74,9 @@ $ ls: 列出所有文件
 Crtl-p:列出当前存在进程
 Crtl-a x：退出xv6系统
 ./grade-lab-util <可执行文件名>：测试你写的代码（注意这个要在xv6源码根目录下执行）
+riscv64-unknown-elf-gdb kernel/kernel 开启gdb指定位置
+(gdb) target remote localhost:25000 手动设置
+add-auto-load-safe-path .../.gdbinit 自动设置
+
+
 ```

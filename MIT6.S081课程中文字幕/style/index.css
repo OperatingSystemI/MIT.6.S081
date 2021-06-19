@@ -1,0 +1,30 @@
+html {
+	background-color : #222 !important;
+    }
+    /*.simplebar-wrapper {*/
+    body{
+	/* Speed first */
+	text-rendering : optimizeSpeed !important;
+	image-rendering : optimizeSpeed !important;
+	-webkit-image-rendering : optimizeSpeed !important;
+	text-shadow : 0 0 0 #000 !important;
+	-webkit-font-smoothing : antialiased !important;
+	-webkit-filter : invert(1) !important;
+	-ms-filter : invert(1) !important;
+	filter : invert(1) !important;
+	filter : url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'invert\'><feColorMatrix in='SourceGraphic' type='matrix' values='-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0'/></filter></svg>#invert") !important;
+	
+    }
+    
+    ::selection { 
+	color:green !important
+    }
+    
+    img, video, iframe, canvas, svg, embed[type='application/x-shockwave-flash'], object[type='application/x-shockwave-flash'], *[style*='url('] {
+	-webkit-filter : invert(1) !important;
+	-ms-filter : invert(1) !important;
+	filter : invert(1) !important;
+	filter : url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'invert\'><feColorMatrix in='SourceGraphic' type='matrix' values='-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0'/></filter></svg>#invert") !important;
+	;
+    }
+    

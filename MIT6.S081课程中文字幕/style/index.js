@@ -4,7 +4,7 @@ setTimeout(() => {
 		arr[i].count = 0
 		arr[i].onmouseover = () => {
 			// border-bottom:1px solid black;
-			arr[i].style = "font-size:22px;cursor:pointer;color:red"
+			arr[i].style = "font-size:22px;cursor:pointer;color:rgb(0,55,10)"
 
 		}
 		arr[i].onmouseout = () => {
@@ -18,4 +18,4 @@ setTimeout(() => {
 			// 	arr[i].style="cursor:pointer"
 		}
 	}
-}, 3000)
+}, 1000)

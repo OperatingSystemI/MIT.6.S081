@@ -54,7 +54,7 @@ xv6 必须为进程提供互相协作的方法。譬如，父进程需要等待�
 
 为了说明，假设有一个生产者/消费者队列。这个队列有些类似于 IDE 驱动用来同步处理器和设备驱动的队列（见第3章），不过下面所讲的更能概括 IDE 驱动中的代码。该队列允许一个进程将一个非零指针发送给另一个进程。假设只有一个发送者和一个接受者，并且它们运行在不同的 CPU 上，那么下面的实现显然是正确的：
 
-~~~ C
+``` C
 struct q {
     void *ptr;
 };
@@ -76,7 +76,7 @@ recv(struct q * q)
     q->ptr = 0;
     return p;
 }
-~~~
+```
 
 `send` 会不断循环，直到队列为空（`ptr == 0`），然后将指针 `p` 放到队列中。`recv` 会不断循环，直到队列非空然后取出指针。当不同的进程运行时，`send` 和 `recv` 会同时修改 `q->ptr`，不过 `send` 只在队列空时写入指针，而 `recv` 只在队列非空时拿出指针，这样他们之间是不会互相干扰的。
 
@@ -84,7 +84,7 @@ recv(struct q * q)
 
 让我们来考虑一对调用 `sleep` 和 `wakeup`，其工作方式如下。`sleep(chan)` 让进程在任意的 `chan` 上休眠，称之为*等待队列（wait channel）*。`sleep` 让调用进程休眠，释放所占 CPU。`wakeup(chan)` 则唤醒在 `chan` 上休眠的所有进程，让他们的 `sleep` 调用返回。如果没有进程在 `chan` 上等待唤醒，`wakeup` 就什么也不做。让我们用 `sleep` 和 `wakeup` 来重新实现上面的代码：
 
-~~~ C
+``` C
 void*
 send(struct q *q, void *p)
 {
@@ -103,7 +103,7 @@ recv(struct q *q)
     q->ptr = 0;
     return p;
 }
-~~~
+```
 
 ![figure5-2](../pic/f5-2.png)
 
@@ -111,7 +111,7 @@ recv(struct q *q)
 
 这个问题的根源在于没有维持好一个固定状态，即由于 `send` 在错误的时机运行了，而使得 `recv` 只能在 `q->ptr == 0` 时睡眠这个行为被妨碍了。下面我们还将看到一段能保护该固定状态但仍有问题的代码：
 
-~~~ C
+``` C
 struct q {
     struct spinlock lock;
     void *ptr;
@@ -139,13 +139,13 @@ recv(struct q *q)
     release(&q->lock;
     return p;
 }
-~~~
+```
 
 由于要调用 `sleep` 的进程是持有锁 `q->lock` 的，而 `send` 想要调用 `wakeup` 也必须获得锁，所以这种方案能够保护上面讲到的固定状态。但是这种方案也会出现死锁：当 `recv` 带着锁 `q->lock` 进入睡眠后，发送者就会在希望获得锁时一直阻塞。
 
 所以想要解决问题，我们必须要改变 `sleep` 的接口。`sleep` 必须将锁作为一个参数，然后在进入睡眠状态后释放之；这样就能避免上面提到的“遗失的唤醒”问题。一旦进程被唤醒了，`sleep` 在返回之前还需要重新获得锁。于是我们应该使用下面的代码：
 
-~~~ C
+``` C
 struct q {
     struct spinlock lock;
     void *ptr;
@@ -173,7 +173,7 @@ recv(struct q *q)
     release(&q->lock;
     return p;
 }
-~~~
+```
 
 `recv` 持有 `q->lock` 就能防止 `send` 在 `recv` 检查 `q->ptr` 与调用 `sleep` 之间调用 `wakeup` 了。当然，为了避免死锁，接收进程最好别在睡眠时仍持有锁。所以我们希望 `sleep` 能用原子操作释放 `q->lock` 并让接收进程进入休眠状态。
 
@@ -245,19 +245,19 @@ xv6 所实现的调度算法非常朴素，仅仅是让每个进程轮流执行�
 
 1.`sleep` 必须检查 `lk != &ptable.lock` 以避免死锁（2567-2570）。我们可以通过把代码
 
-~~~ C
+``` C
 if (lk != &ptable.lock){
     acquire(&ptable.lcok);
     release(lk);
 }
-~~~
+```
 
 替换为
 
-~~~ C
+``` C
 release(lk);
 acquire(&ptable.lock);
-~~~
+```
 
 来避免对特殊情况的判断。这样做会打断 `sleep` 吗？如果会，是在什么情况下？
 
